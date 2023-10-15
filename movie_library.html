@@ -24,11 +24,11 @@
                     <img src="./images/Logo White.svg" class="img-fluid">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="menuToggle">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto" id="menuItems">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
@@ -39,10 +39,10 @@
                             <a class="nav-link" href="#">Schedule</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Movie Libarary</a>
+                            <a class="nav-link" href="#">Movie Library</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Location & contact</a>
+                            <a class="nav-link" href="#">Location & Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -83,37 +83,38 @@
                 </div>
                 <div class="col-md-4 text-end">
                     <div class="input-group mb-3" style="height: 60px;">
-                        <button class="btn btn-light" type="button">
+                        <button class="btn btn-light" type="button" onclick="searchShows()">
                             <img src="./images/Search White.svg" class="img-fluid">
                         </button>
                         <input type="search" class="form-control" placeholder="Search title and add to grid"
-                            aria-label="Search">
+                            aria-label="Search" id="searchInput" style="color: #fff;">
                     </div>
                 </div>
             </div>
-            <div class="row pt-5">
+            <div class="row pt-5 gy-3">
                 <div class="col-md-4">
                     <div class="card mb-3">
-                        <img src="./images/Batman.jpg" class="card-img-top img-fluid">
+                        <img src="./images/Batman.jpg" class="card-img-top img-fluid" id="cardImage">
                         <div class="close-btn-div pt-2 ps-3 pb-3 pe-3 me-2 mt-2">
                             <img src="./images/Close White.svg" />
                         </div>
                         <div class="card-body">
-                            <h2 class="card-h2">Batman Returns</h2>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            <h2 class="card-h2" id="cardTitle">Batman Returns</h2>
+                            <p class="card-text" id="cardSummary">Some quick example text to build on the card title and
+                                make up the bulk
                                 of the card's content.</p>
                         </div>
                     </div>
 
                 </div>
                 <div class="col-md-4">
-                    <div class="card mb-3">
+                    <div class="card mb-5">
                         <img src="./images/Wild West.jpg" class="card-img-top img-fluid">
                         <div class="close-btn-div pt-2 ps-3 pb-3 pe-3 me-2 mt-2">
                             <img src="./images/Close White.svg" />
                         </div>
                         <div class="card-body">
-                            <h2 class="card-h2">Batman Returns</h2>
+                            <h2 class="card-h2">Wild Wild West</h2>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                         </div>
@@ -127,13 +128,18 @@
                             <img src="./images/Close White.svg" />
                         </div>
                         <div class="card-body">
-                            <h2 class="card-h2">Batman Returns</h2>
+                            <h2 class="card-h2">The Amazing Spiderman</h2>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                         </div>
                     </div>
 
                 </div>
+                <div class="row pt-5 gy-3" id="results">
+                    <!-- Results will be displayed here -->
+                </div>
+
+
             </div>
         </div>
     </section>
@@ -155,21 +161,24 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">First Name *</label>
-                                    <input type="text" class="form-control contact-form-input" id="first-name" aria-describedby="emailHelp">
+                                    <input type="text" class="form-control contact-form-input" id="first-name"
+                                        aria-describedby="emailHelp">
                                     <span id="first-name-error" class="error-message"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Last Name *</label>
-                                    <input type="text" class="form-control contact-form-input" id="last-name" aria-describedby="emailHelp">
+                                    <input type="text" class="form-control contact-form-input" id="last-name"
+                                        aria-describedby="emailHelp">
                                     <span id="last-name-error" class="error-message"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email *</label>
-                            <input type="email" class="form-control contact-form-input" id="email" aria-describedby="emailHelp">
+                            <input type="email" class="form-control contact-form-input" id="email"
+                                aria-describedby="emailHelp">
                             <span id="email-error" class="error-message"></span>
                         </div>
                         <div class="mb-3">
@@ -178,19 +187,25 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Message</label>
-                            <textarea class="form-control contact-form-input" id="message" style="height: 150px"></textarea>
-                
+                            <textarea class="form-control contact-form-input" id="message"
+                                style="height: 150px"></textarea>
+
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                            <label class="form-check-label" for="exampleCheck1" style="font-size: 18px;color: #c0c1c1;">I agree to the <a
-                                    href="" style="color: #fff;">Terms & Conditions</a></label>
+                            <label class="form-check-label" for="exampleCheck1"
+                                style="font-size: 18px;color: #c0c1c1;">I agree to the <a href=""
+                                    style="color: #fff;">Terms & Conditions</a></label>
                         </div>
-                        <button type="submit" class="btn btn-warning text-white text-uppercase submit-btn mb-3">Submit</button>
+                        <button type="submit"
+                            class="btn btn-warning text-white text-uppercase submit-btn mb-3">Submit</button>
                     </form>
                 </div>
                 <div class="col-md-6">
-                    <iframe class="h-100 w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.3807403172596!2d79.940426!3d6.8448775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25069caa2f53b%3A0xe7eae3a8b1f1214d!2seBEYONDS%20eBusiness%20%26%20Digital%20Solutions!5e0!3m2!1sen!2slk!4v1697361677802!5m2!1sen!2slk"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>              
+                    <iframe class="h-100 w-100"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.3807403172596!2d79.940426!3d6.8448775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25069caa2f53b%3A0xe7eae3a8b1f1214d!2seBEYONDS%20eBusiness%20%26%20Digital%20Solutions!5e0!3m2!1sen!2slk!4v1697361677802!5m2!1sen!2slk"
+                        style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -202,14 +217,16 @@
             <div class="row">
                 <div class="col-md-6 footer-detail">
                     <p class="footer-contact-detail">IT Group</p>
-                        <div class="address-sec">
-                            <p class="footer-contact-detail">C. Salvador de Madariaga, 1 </p>
-                            <p class="footer-contact-detail">28027 Madrid</p>
-                            <p class="footer-contact-detail">Spain</p>
-                        </div>
+                    <div class="address-sec">
+                        <p class="footer-contact-detail">C. Salvador de Madariaga, 1 </p>
+                        <p class="footer-contact-detail">28027 Madrid</p>
+                        <p class="footer-contact-detail">Spain</p>
+                    </div>
                 </div>
                 <div class="col-md-6 social-media-sec">
-                    <p class="social-media-sec">Follow us on <span><img class="ms-3 me-3" src="./images/Twitter White.svg" class="img-fluid"></span><span><img src="./images/Youtube White.svg" class="img-fluid"></span></p>
+                    <p class="social-media-sec">Follow us on <span><img class="ms-3 me-3"
+                                src="./images/Twitter White.svg" class="img-fluid"></span><span><img
+                                src="./images/Youtube White.svg" class="img-fluid"></span></p>
                 </div>
             </div>
         </div>
@@ -218,18 +235,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                       <p class="copy-right-p">Copyright © 2022 IT Hotels. All rights reserved.</p> 
+                        <p class="copy-right-p">Copyright © 2022 IT Hotels. All rights reserved.</p>
                     </div>
                     <div class="col-md-6">
-                       <p class="copy-right-owner">Photos by <a href="" style="color: #c0c1c1;"> Mooneeram </a>& <a href="" style="color: #c0c1c1;">Kutuzov</a> on Unsplash</p> 
+                        <p class="copy-right-owner">Photos by <a href="" style="color: #c0c1c1;"> Mooneeram </a>& <a
+                                href="" style="color: #c0c1c1;">Kutuzov</a> on Unsplash</p>
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </section>
 
-    
+
 
 
 
@@ -246,7 +264,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Google Map Script -->
-    
+
 
     <!-- Custom JS -->
 
@@ -263,7 +281,7 @@
             });
         });
 
-      
+
         function validateForm() {
             let firstName = document.getElementById('first-name').value;
             let lastName = document.getElementById('last-name').value;
@@ -305,6 +323,67 @@
 
             return valid;
         }
+
+
+
+        function searchShows() {
+        var searchQuery = document.getElementById('searchInput').value;
+        var url = `http://api.tvmaze.com/search/shows?q=${searchQuery}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                var resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = ''; // Clear previous results
+
+                data.forEach(item => {
+                    var showName = item.show.name;
+                    var summary = item.show.summary;
+                    var imageSource = item.show.image ? item.show.image.medium : './images/placeholder.jpg';
+
+                    var showDiv = document.createElement('div');
+                    showDiv.classList.add("col-md-4"); // Adjust the classes as per your design
+                    showDiv.innerHTML = `
+                        <div class="card mb-3">
+                            <img src="${imageSource}" class="card-img-top img-fluid">
+                            <div class="close-btn-div pt-2 ps-3 pb-3 pe-3 me-2 mt-2">
+                                <img src="./images/Close White.svg" onclick="removeFromGrid(this)">
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-h2">${showName}</h2>
+                                <p class="card-text">${summary ? summary.replace(/<[^>]*>?/gm, '') : ''}</p>
+                                <button class="btn btn-primary mt-2" onclick="addToGrid(this)">Add to grid</button>
+                            </div>
+                        </div>`;
+                    resultsDiv.appendChild(showDiv);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+        function addToGrid(button) {
+            var card = button.parentElement.parentElement.parentElement;
+            var cardClone = card.cloneNode(true);
+            cardClone.querySelector('.close-btn-div img').setAttribute('onclick', 'removeFromGrid(this)');
+            cardClone.querySelector('button').remove();
+            document.getElementById('my-collection').appendChild(cardClone);
+        }
+
+        function removeFromGrid(button) {
+            var cardName = button.getAttribute('data-name');
+            var cards = document.querySelectorAll('#my-collection .card');
+            cards.forEach(card => {
+                if (card.querySelector('.card-h2').innerText === cardName) {
+                    card.remove();
+                }
+            });
+        }
+
+        document.getElementById("menuToggle").addEventListener("click", function () {
+        document.getElementById("menuItems").classList.toggle("show");
+    });
 
     </script>
 

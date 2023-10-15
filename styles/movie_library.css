@@ -74,6 +74,7 @@ h2{
     background-clip: border-box;
     border: none;
     border-radius: 0; 
+    height: 100%;
 }
 
 .card-img-top {
@@ -130,7 +131,7 @@ h2{
 .submit-btn{
     color: #fff;
     float: right;
-    border-radius: 0;
+    
     font-weight: bold;
     padding: 5px 30px;
 }
@@ -164,6 +165,14 @@ h2{
     text-align: end;
 }
 
+.btn-light:focus {
+    box-shadow: none;
+}
+
+
+.hidden {
+    display: none;
+}
 
 /* Media query  */
 @media (max-width: 767px) {
